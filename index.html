@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>AffiliatePro - #1 Affiliate Marketing Platform in Kenya</title>
+    <meta name="description" content="Join Kenya's fastest growing affiliate marketing platform. Earn 50% commission on every referral. Start your journey to financial freedom today!">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient: linear-gradient(135deg, #2563eb, #10b981);
+            --gradient-orange: linear-gradient(135deg, #f59e0b, #f97316);
+            --shadow: 0 20px 40px -15px rgba(0,0,0,0.2);
+            --shadow-sm: 0 4px 6px -2px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h2 {
+            font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo span {
+            background: var(--gradient-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+        }
+
+        .btn-outline {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white !important;
+        }
+
+        .btn-primary {
+            padding: 0.6rem 1.2rem;
+            background: var(--gradient);
+            color: white !important;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37,99,235,0.5);
+        }
+
+        .btn-large {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fbbf24;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2.5rem 0;
+        }
+
+        .hero-cta .btn-outline {
+            border-color: white;
+            color: white;
+        }
+
+        .hero-cta .btn-outline:hover {
+            background: white;
+            color: var(--dark) !important;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .trust-badges i {
+            color: #10b981;
+            margin-right: 0.5rem;
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--gray);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .feature-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-highlight {
+            margin-top: 1.5rem;
+            padding: 0.5rem;
+            background: #f1f5f9;
+            border-radius: 50px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: #f8fafc;
+        }
+
+        .steps-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow-sm);
+            flex: 1 1 250px;
+            text-align: center;
+            position: relative;
+            border: 1px solid #e2e8f0;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: -50px auto 1rem;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .step-arrow i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .step-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .step-detail span {
+            background: #e2e8f0;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* Calculator */
+        .calculator-section {
+            background: var(--gradient);
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 50px;
+            padding: 4rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .calculator-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .calculator {
+            margin: 3rem 0;
+        }
+
+        .calc-input {
+            margin-bottom: 2rem;
+        }
+
+        .calc-input input {
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        .calc-result {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .result-item {
+            background: #f1f5f9;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+        }
+
+        .result-item.highlight {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 30px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            border: 1px solid #e2e8f0;
+        }
+
+        .testimonial-image img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-content i {
+            color: var(--primary);
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        .testimonial-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            color: var(--gray);
+        }
+
+        .stats-counter {
+            display: flex;
+            justify-content: space-around;
+            background: var(--gradient);
+            color: white;
+            padding: 3rem;
+            border-radius: 50px;
+        }
+
+        .counter-item {
+            text-align: center;
+        }
+
+        .counter-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        /* FAQ */
+        .faq-section {
+            background: #f8fafc;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+
+        .cta-card {
+            background: white;
+            border-radius: 50px;
+            padding: 4rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .cta-features span i {
+            color: #10b981;
+            margin-right: 0.5rem;
+        }
+
+        .small-text {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col h3 span {
+            color: #f59e0b;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        .payment-badges img {
+            height: 30px;
+            margin-right: 0.5rem;
+            background: white;
+            border-radius: 5px;
+            padding: 0.2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .steps-container { flex-direction: column; }
+            .step-arrow { transform: rotate(90deg); }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                transition: 0.3s;
+            }
+            .nav-menu.active { left: 0; }
+            .nav-buttons { flex-direction: column; }
+            .hero-stats { flex-direction: column; gap: 1rem; }
+            .hero-cta { flex-direction: column; }
+            .testimonial-card { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>Affiliate<span>Pro</span></h2>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#testimonials">Success Stories</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="nav-buttons">
+                    <a href="#" class="btn-outline">Login</a>
+                    <a href="#" class="btn-primary">Join Now</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-video">
+            <video autoplay muted loop id="bg-video">
+                <source src="data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAAQxtZGF0AAAAMgAAACh3cnZrb25nIHJvbGwgb2YgZ3JlZW4gaGlsbHMgYW5kIG1vdW50YWlucw==" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+        <div class="hero-content" data-aos="fade-up">
+            <span class="badge">🏆 Kenya's #1 Affiliate Platform</span>
+            <h1>Turn Your Network Into <span class="gradient-text">Income</span></h1>
+            <p class="hero-subtitle">Join thousands of Kenyans earning daily by simply referring friends. No experience needed!</p>
+            <div class="hero-stats">
+                <div class="stat-item"><span class="stat-number">10K+</span><span class="stat-label">Active Members</span></div>
+                <div class="stat-item"><span class="stat-number">KES 2M+</span><span class="stat-label">Paid Out</span></div>
+                <div class="stat-item"><span class="stat-number">4.8★</span><span class="stat-label">User Rating</span></div>
+            </div>
+            <div class="hero-cta">
+                <a href="#" class="btn-primary btn-large"><i class="fas fa-rocket"></i> Start Earning Now - KES 300 Only</a>
+                <a href="#how-it-works" class="btn-outline btn-large"><i class="fas fa-play"></i> Watch Demo</a>
+            </div>
+            <div class="trust-badges">
+                <span><i class="fas fa-shield-alt"></i> Secure Payments</span>
+                <span><i class="fas fa-clock"></i> Instant Commissions</span>
+                <span><i class="fas fa-headset"></i> 24/7 Support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Why Choose AffiliatePro?</h2>
+                <p>Everything you need to succeed in affiliate marketing</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon"><i class="fas fa-percent"></i></div>
+                    <h3>50% Commission</h3>
+                    <p>Earn KES 150 instantly when your referral joins. That's 50% of the registration fee!</p>
+                    <div class="feature-highlight"><strong>KES 150 per referral</strong></div>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Instant Payouts</h3>
+                    <p>Get paid immediately via M-PESA when your referrals register. No waiting periods!</p>
+                    <div class="feature-highlight"><strong>24/7 Withdrawals</strong></div>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Unlimited Referrals</h3>
+                    <p>No limits on how many people you can refer. The more you refer, the more you earn!</p>
+                    <div class="feature-highlight"><strong>No Cap</strong></div>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Real-Time Dashboard</h3>
+                    <p>Track your earnings, referrals, and commissions in real-time with our advanced dashboard.</p>
+                    <div class="feature-highlight"><strong>Analytics Included</strong></div>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile Optimized</h3>
+                    <p>Manage your business from anywhere. Fully responsive design works on all devices.</p>
+                    <div class="feature-highlight"><strong>Works on All Phones</strong></div>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                    <h3>Weekly Bonuses</h3>
+                    <p>Top referrers get extra bonuses every week. Plus special prizes and rewards!</p>
+                    <div class="feature-highlight"><strong>Extra Earnings</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>How It Works</h2>
+                <p>Start earning in 3 simple steps</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-card" data-aos="fade-right">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+                    <h3>Register Account</h3>
+                    <p>Create your account with just KES 300. Get your unique referral link instantly.</p>
+                    <div class="step-detail"><span>✓ Phone Number</span><span>✓ M-PESA Payment</span></div>
+                </div>
+                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="step-card" data-aos="fade-up">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-share-alt"></i></div>
+                    <h3>Share Your Link</h3>
+                    <p>Share your unique referral link with friends, family, and on social media.</p>
+                    <div class="step-detail"><span>✓ WhatsApp</span><span>✓ Facebook</span><span>✓ SMS</span></div>
+                </div>
+                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="step-card" data-aos="fade-left">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-coins"></i></div>
+                    <h3>Earn Money</h3>
+                    <p>Get KES 150 instantly when your referral registers. Withdraw anytime!</p>
+                    <div class="step-detail"><span>✓ Instant Payment</span><span>✓ M-PESA Withdrawal</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-card" data-aos="zoom-in">
+                <h2>Calculate Your Potential Earnings</h2>
+                <p>See how much you can earn with AffiliatePro</p>
+                <div class="calculator">
+                    <div class="calc-input">
+                        <label>Number of referrals per month:</label>
+                        <input type="range" id="referralRange" min="0" max="100" value="10">
+                        <span id="referralCount">10</span> friends
+                    </div>
+                    <div class="calc-result">
+                        <div class="result-item"><span>Monthly Earnings:</span> <strong id="monthlyEarnings">KES 1,500</strong></div>
+                        <div class="result-item"><span>Yearly Earnings:</span> <strong id="yearlyEarnings">KES 18,000</strong></div>
+                        <div class="result-item highlight"><span>Potential Bonus:</span> <strong id="bonusEarnings">KES 500</strong></div>
+                    </div>
+                </div>
+                <a href="#" class="btn-primary btn-large">Start Earning This Amount</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Success Stories</h2>
+                <p>Real people, real earnings</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-right">
+                    <div class="testimonial-image"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah"></div>
+                    <div class="testimonial-content"><i class="fas fa-quote-left"></i><p>"I started with just KES 300 and now I earn over KES 15,000 monthly. Best decision I ever made!"</p><h4>Sarah Wanjiku</h4><div class="testimonial-meta"><span>Earned: KES 45,000</span><span>★★★★★</span></div></div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-image"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John"></div>
+                    <div class="testimonial-content"><i class="fas fa-quote-left"></i><p>"The platform is so easy to use. I just share my link on WhatsApp and the money comes instantly!"</p><h4>John Omondi</h4><div class="testimonial-meta"><span>Earned: KES 28,500</span><span>★★★★★</span></div></div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-left">
+                    <div class="testimonial-image"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Mary"></div>
+                    <div class="testimonial-content"><i class="fas fa-quote-left"></i><p>"I've tried many online earning platforms, but AffiliatePro actually pays. Withdrew to M-PESA immediately!"</p><h4>Mary Akinyi</h4><div class="testimonial-meta"><span>Earned: KES 67,200</span><span>★★★★★</span></div></div>
+                </div>
+            </div>
+            <div class="stats-counter" data-aos="fade-up">
+                <div class="counter-item"><span class="counter-number" data-target="10500">10500</span><span class="counter-label">Happy Members</span></div>
+                <div class="counter-item"><span class="counter-number" data-target="2500000">2.5M</span><span class="counter-label">KES Paid Out</span></div>
+                <div class="counter-item"><span class="counter-number" data-target="15000">15K</span><span class="counter-label">Daily Referrals</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item" data-aos="fade-right"><div class="faq-question"><h3>Is this legit?</h3><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Absolutely! We've paid over KES 2M to our members. We're registered and verified.</p></div></div>
+                <div class="faq-item" data-aos="fade-left"><div class="faq-question"><h3>How do I get paid?</h3><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Payments are sent directly to your M-PESA immediately when your referral registers.</p></div></div>
+                <div class="faq-item" data-aos="fade-right"><div class="faq-question"><h3>Is there a limit to referrals?</h3><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>No limits! You can refer as many people as you want and earn on each one.</p></div></div>
+                <div class="faq-item" data-aos="fade-left"><div class="faq-question"><h3>What if someone doesn't pay?</h3><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>We verify all payments. If a referral doesn't pay, they can't register, so you're protected.</p></div></div>
+                <div class="faq-item" data-aos="fade-right"><div class="faq-question"><h3>Can I withdraw anytime?</h3><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Yes! Withdraw your earnings anytime, 24/7. Minimum withdrawal is KES 100.</p></div></div>
+                <div class="faq-item" data-aos="fade-left"><div class="faq-question"><h3>Do I need experience?</h3><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>No experience needed. We provide training and support to all members.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card" data-aos="zoom-in">
+                <h2>Ready to Start Earning?</h2>
+                <p>Join thousands of Kenyans already earning with AffiliatePro</p>
+                <div class="cta-features"><span><i class="fas fa-check-circle"></i> KES 300 Only</span><span><i class="fas fa-check-circle"></i> Instant Access</span><span><i class="fas fa-check-circle"></i> Start Earning Today</span></div>
+                <a href="#" class="btn-primary btn-large"><i class="fas fa-rocket"></i> Join AffiliatePro Now</a>
+                <p class="small-text">30-Day Money-Back Guarantee</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h3>Affiliate<span>Pro</span></h3><p>Kenya's most trusted affiliate marketing platform. Start earning today!</p><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div></div>
+                <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#features">Features</a></li><li><a href="#how-it-works">How It Works</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+                <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Terms & Conditions</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Payment Policy</a></li><li><a href="#">Report Issue</a></li></ul></div>
+                <div class="footer-col"><h4>Contact Us</h4><ul class="contact-info"><li><i class="fas fa-phone"></i> 0712 345 678</li><li><i class="fas fa-envelope"></i> support@affiliatepro.co.ke</li><li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li></ul><div class="payment-badges"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25' viewBox='0 0 40 25'%3E%3Crect width='40' height='25' fill='%234CAF50' rx='4'/%3E%3Ctext x='5' y='18' fill='white' font-size='12' font-family='Arial'%3EMPESA%3C/text%3E%3C/svg%3E" alt="M-PESA"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='25' viewBox='0 0 40 25'%3E%3Crect width='40' height='25' fill='%231F72B5' rx='4'/%3E%3Ctext x='10' y='18' fill='white' font-size='12' font-family='Arial'%3EVISA%3C/text%3E%3C/svg%3E" alt="Visa"></div></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 AffiliatePro. All rights reserved. | Made with <i class="fas fa-heart"></i> in Kenya</p></div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Mobile menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        mobileMenu.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => item.classList.toggle('active'));
+        });
+
+        // Calculator
+        const range = document.getElementById('referralRange');
+        const count = document.getElementById('referralCount');
+        const monthly = document.getElementById('monthlyEarnings');
+        const yearly = document.getElementById('yearlyEarnings');
+        const bonus = document.getElementById('bonusEarnings');
+        
+        function updateCalc(val) {
+            count.textContent = val;
+            const monthEarn = val * 150;
+            monthly.textContent = `KES ${monthEarn.toLocaleString()}`;
+            yearly.textContent = `KES ${(monthEarn * 12).toLocaleString()}`;
+            bonus.textContent = `KES ${Math.floor(monthEarn * 0.3)}`;
+        }
+        range.addEventListener('input', (e) => updateCalc(e.target.value));
+        updateCalc(10);
+    </script>
+</body>
+</html>
