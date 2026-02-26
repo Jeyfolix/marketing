@@ -8,8 +8,6 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Animate.css for additional animations -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
         * {
@@ -20,32 +18,20 @@
 
         :root {
             --primary: #2563eb;
-            --primary-light: #3b82f6;
             --primary-dark: #1d4ed8;
             --secondary: #10b981;
-            --secondary-light: #34d399;
             --accent: #f59e0b;
-            --accent-light: #fbbf24;
-            --purple: #8b5cf6;
-            --pink: #ec4899;
-            --dark: #0f172a;
-            --dark-light: #1e293b;
+            --dark: #1e293b;
             --light: #f8fafc;
             --gray: #64748b;
-            --gradient-1: linear-gradient(135deg, #2563eb, #10b981);
-            --gradient-2: linear-gradient(135deg, #8b5cf6, #ec4899);
-            --gradient-3: linear-gradient(135deg, #f59e0b, #f97316);
-            --gradient-4: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.25);
-            --shadow-colored: 0 20px 40px -15px rgba(37,99,235,0.3);
+            --gradient: linear-gradient(135deg, #2563eb, #10b981);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             min-height: 100vh;
-            background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.8) 0%, rgba(139, 92, 246, 0.8) 90%);
+            background: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -54,257 +40,90 @@
             overflow-x: hidden;
         }
 
-        /* Animated background elements */
+        /* Overlay to make content readable */
         body::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: backgroundMove 20s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes backgroundMove {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Floating particles */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
-            animation: float 6s ease-in-out infinite;
-            z-index: 0;
-        }
-
-        .particle:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .particle:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            bottom: 15%;
-            right: 8%;
-            animation-delay: 2s;
-        }
-
-        .particle:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            top: 30%;
-            right: 15%;
-            animation-delay: 4s;
-        }
-
-        .particle:nth-child(4) {
-            width: 100px;
-            height: 100px;
-            bottom: 25%;
-            left: 10%;
-            animation-delay: 6s;
-        }
-
-        .particle:nth-child(5) {
-            width: 40px;
-            height: 40px;
-            top: 60%;
-            left: 20%;
-            animation-delay: 8s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-30px) scale(1.1); }
-        }
-
-        .auth-container {
-            width: 100%;
-            max-width: 480px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .auth-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-            padding: 2.8rem;
-            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,0.3);
-            animation: slideUpFade 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            border: 1px solid rgba(255,255,255,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .auth-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: var(--gradient-1);
-            animation: borderGlow 3s ease-in-out infinite;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.85), rgba(16, 185, 129, 0.85));
+            z-index: 1;
         }
 
-        .auth-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-            opacity: 0;
-            animation: glowPulse 4s ease-in-out infinite;
-            pointer-events: none;
+        .auth-container {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
         }
 
-        @keyframes borderGlow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(1.2); }
-        }
-
-        @keyframes slideUpFade {
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        .auth-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 100%;
         }
 
         .logo {
             text-align: center;
             margin-bottom: 2rem;
-            position: relative;
         }
 
         .logo h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: var(--gradient-1);
+            font-size: 2rem;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            animation: logoPulse 3s ease-in-out infinite;
-            text-shadow: 0 5px 15px rgba(37,99,235,0.3);
+            font-weight: 700;
         }
 
         .logo span {
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes logoPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            color: #f59e0b;
+            -webkit-text-fill-color: #f59e0b;
         }
 
         .auth-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .auth-header h1 {
-            font-size: 2.2rem;
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            color: var(--dark);
             margin-bottom: 0.5rem;
-            animation: slideInRight 0.6s ease-out;
+            font-weight: 600;
         }
 
         .auth-header p {
             color: var(--gray);
-            font-size: 1.1rem;
-            animation: slideInLeft 0.6s ease-out;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            font-size: 1rem;
         }
 
         .auth-form {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1.8rem;
-            position: relative;
-            animation: fadeInUp 0.5s ease-out forwards;
-            opacity: 0;
-        }
-
-        .form-group:nth-child(1) { animation-delay: 0.2s; }
-        .form-group:nth-child(2) { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--dark);
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
-            letter-spacing: 0.5px;
         }
 
         .form-group label i {
             color: var(--primary);
             margin-right: 0.5rem;
-            transition: transform 0.3s;
-        }
-
-        .form-group:hover label i {
-            transform: translateX(5px);
-            color: var(--secondary);
+            width: 16px;
         }
 
         .input-wrapper {
@@ -313,61 +132,47 @@
 
         .form-group input {
             width: 100%;
-            padding: 1.2rem 1.2rem;
-            padding-right: 3rem;
-            border: 2px solid rgba(226, 232, 240, 0.8);
-            border-radius: 20px;
+            padding: 0.9rem 1rem;
+            padding-right: 2.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             font-size: 1rem;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            background: rgba(255,255,255,0.9);
-            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            background: #f8fafc;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: transparent;
-            box-shadow: 0 0 0 4px rgba(37,99,235,0.1), 0 0 20px rgba(37,99,235,0.2);
+            border-color: var(--primary);
             background: white;
-            transform: translateY(-2px);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         .form-group input:hover {
             border-color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        .form-group input:focus + .input-highlight {
-            transform: scaleX(1);
         }
 
         .toggle-password {
             position: absolute;
-            right: 1.2rem;
+            right: 1rem;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
             color: var(--gray);
-            transition: all 0.3s;
-            font-size: 1.2rem;
-            z-index: 2;
+            transition: color 0.3s;
+            font-size: 1rem;
         }
 
         .toggle-password:hover {
             color: var(--primary);
-            transform: translateY(-50%) scale(1.1);
         }
 
         .form-options {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            animation: fadeIn 0.8s ease-out 0.4s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .remember-me {
@@ -376,187 +181,94 @@
             gap: 0.5rem;
             color: var(--gray);
             cursor: pointer;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .remember-me:hover {
-            color: var(--primary);
         }
 
         .remember-me input {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
             accent-color: var(--primary);
-            transition: transform 0.3s;
-        }
-
-        .remember-me input:hover {
-            transform: scale(1.1);
         }
 
         .forgot-password {
             color: var(--primary);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .forgot-password::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.3s;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
         .forgot-password:hover {
             color: var(--primary-dark);
-        }
-
-        .forgot-password:hover::after {
-            width: 100%;
+            text-decoration: underline;
         }
 
         .auth-btn {
             width: 100%;
-            padding: 1.2rem;
-            background: var(--gradient-1);
+            padding: 0.9rem;
+            background: var(--gradient);
             color: white;
             border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.8rem;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            overflow: hidden;
-            animation: pulse 2s infinite;
-            box-shadow: 0 10px 25px -5px rgba(37,99,235,0.5);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .auth-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .auth-btn:hover::before {
-            width: 300px;
-            height: 300px;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
         }
 
         .auth-btn:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 20px 35px -8px rgba(37,99,235,0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
         }
 
         .auth-btn:disabled {
             opacity: 0.7;
             cursor: not-allowed;
             transform: none;
-            animation: none;
-        }
-
-        .auth-btn i {
-            transition: transform 0.3s;
-        }
-
-        .auth-btn:hover i {
-            transform: translateX(5px);
         }
 
         .error-messages {
-            background: linear-gradient(135deg, #fee2e2, #ffd5d5);
-            border-left: 4px solid #ef4444;
-            border-radius: 15px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 2rem;
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
             color: #b91c1c;
             display: none;
-            animation: shake 0.5s ease-in-out;
-            box-shadow: var(--shadow);
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-
-        .error-messages ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .error-messages li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .error-messages i {
+            margin-right: 0.5rem;
             color: #ef4444;
-            font-size: 1.1rem;
         }
 
         .auth-footer {
             text-align: center;
             color: var(--gray);
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 2px dashed rgba(226, 232, 240, 0.5);
-            animation: fadeIn 1s ease-out 0.6s both;
-        }
-
-        .auth-footer p {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .auth-footer a {
             color: var(--primary);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            position: relative;
-            display: inline-block;
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
         .auth-footer a:hover {
-            color: var(--secondary);
-            transform: translateX(5px);
+            color: var(--primary-dark);
+            text-decoration: underline;
         }
 
         .auth-divider {
             text-align: center;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             position: relative;
-            animation: fadeIn 1s ease-out 0.8s both;
         }
 
         .auth-divider::before {
@@ -565,109 +277,92 @@
             top: 50%;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+            height: 1px;
+            background: #e2e8f0;
             z-index: 1;
         }
 
         .auth-divider span {
             background: white;
-            padding: 0 1.5rem;
-            color: var(--dark);
-            font-weight: 600;
+            padding: 0 1rem;
+            color: var(--gray);
             position: relative;
             z-index: 2;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
 
         .social-login {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            animation: fadeInUp 0.8s ease-out 1s both;
         }
 
         .social-btn {
-            padding: 1rem;
-            border: none;
-            border-radius: 20px;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             background: white;
             color: var(--dark);
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 0.95rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.8rem;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-        }
-
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(37,99,235,0.1);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .social-btn:hover::before {
-            width: 300px;
-            height: 300px;
+            gap: 0.5rem;
+            transition: all 0.3s;
         }
 
         .social-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
+            background: #f8fafc;
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
 
-        .social-btn.google:hover {
-            background: #db4437;
+        .social-btn.google i {
+            color: #db4437;
+        }
+
+        .social-btn.facebook i {
+            color: #4267B2;
+        }
+
+        .back-home {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
             color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            z-index: 3;
         }
 
-        .social-btn.facebook:hover {
-            background: #4267B2;
-            color: white;
-        }
-
-        .social-btn i {
-            font-size: 1.2rem;
-            transition: transform 0.3s;
-        }
-
-        .social-btn:hover i {
-            transform: scale(1.2);
+        .back-home:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .notification {
             position: fixed;
-            top: 30px;
-            right: 30px;
-            padding: 1.2rem 2rem;
-            border-radius: 15px;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
             color: white;
-            font-weight: 600;
-            transform: translateX(450px);
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            font-weight: 500;
+            transform: translateX(400px);
+            transition: transform 0.3s;
             z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            max-width: 350px;
         }
 
         .notification.show {
@@ -675,251 +370,110 @@
         }
 
         .notification.success {
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: #10b981;
         }
 
         .notification.error {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
+            background: #ef4444;
         }
 
         .notification.info {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            background: #3b82f6;
         }
 
-        .notification i {
-            font-size: 1.4rem;
-        }
-
-        .back-home {
-            position: fixed;
-            top: 25px;
-            left: 25px;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 600;
-            background: rgba(255,255,255,0.2);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: all 0.4s;
-            z-index: 100;
-            box-shadow: var(--shadow);
-        }
-
-        .back-home:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateX(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .back-home i {
-            transition: transform 0.3s;
-        }
-
-        .back-home:hover i {
-            transform: translateX(-3px);
-        }
-
-        /* Loading spinner animation */
-        .fa-spinner {
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 640px) {
+            body {
+                padding: 0.75rem;
+            }
+
             .auth-card {
                 padding: 2rem 1.5rem;
             }
 
             .logo h2 {
-                font-size: 2.2rem;
-            }
-
-            .auth-header h1 {
                 font-size: 1.8rem;
             }
 
-            .auth-header p {
-                font-size: 1rem;
+            .auth-header h1 {
+                font-size: 1.6rem;
             }
 
-            .form-group input {
-                padding: 1rem;
+            .back-home {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .notification {
+                left: 1rem;
+                right: 1rem;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 1.5rem 1rem;
             }
 
             .social-login {
                 grid-template-columns: 1fr;
             }
 
-            .back-home {
-                top: 15px;
-                left: 15px;
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            .notification {
-                left: 20px;
-                right: 20px;
-                transform: translateY(-150%);
-            }
-
-            .notification.show {
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 380px) {
-            .auth-card {
-                padding: 1.5rem 1rem;
-            }
-
             .form-options {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.8rem;
                 align-items: flex-start;
             }
         }
 
-        /* Landscape mode on mobile */
-        @media (max-height: 600px) and (orientation: landscape) {
-            body {
-                padding: 0.5rem;
-            }
-
+        /* Small height screens */
+        @media (max-height: 700px) {
             .auth-card {
                 padding: 1.5rem;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            .auth-header {
+                margin-bottom: 1rem;
             }
 
             .form-group {
                 margin-bottom: 1rem;
             }
-
-            .auth-header {
-                margin-bottom: 1.5rem;
-            }
-
-            .auth-header h1 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* High-resolution displays */
-        @media (min-width: 1920px) {
-            .auth-container {
-                max-width: 550px;
-            }
-
-            .auth-card {
-                padding: 3.5rem;
-            }
-
-            .logo h2 {
-                font-size: 3.2rem;
-            }
-        }
-
-        /* Dark mode support (if user prefers dark mode) */
-        @media (prefers-color-scheme: dark) {
-            .auth-card {
-                background: rgba(30, 41, 59, 0.95);
-            }
-
-            .auth-header h1 {
-                color: var(--light);
-            }
-
-            .auth-header p {
-                color: #94a3b8;
-            }
-
-            .form-group label {
-                color: var(--light);
-            }
-
-            .form-group input {
-                background: rgba(51, 65, 85, 0.9);
-                border-color: #334155;
-                color: white;
-            }
-
-            .form-group input:focus {
-                background: #1e293b;
-            }
-
-            .auth-divider span {
-                background: #1e293b;
-                color: var(--light);
-            }
-
-            .social-btn {
-                background: #334155;
-                color: var(--light);
-                border-color: #475569;
-            }
-
-            .auth-footer {
-                border-top-color: #334155;
-            }
-        }
-
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .form-group input {
-                font-size: 16px; /* Prevents zoom on iOS */
-            }
-
-            .auth-btn:hover {
-                transform: none;
-            }
-
-            .social-btn:hover {
-                transform: none;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Floating particles for background animation -->
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-
-    <a href="index.html" class="back-home animate__animated animate__fadeInLeft">
+    <a href="index.html" class="back-home">
         <i class="fas fa-arrow-left"></i> Back to Home
     </a>
 
     <div class="auth-container">
         <div class="auth-card">
-            <div class="logo animate__animated animate__zoomIn">
+            <div class="logo">
                 <h2>Affiliate<span>Pro</span></h2>
             </div>
             
             <div class="auth-header">
-                <h1>Welcome Back! 👋</h1>
-                <p>Login to your account and continue earning</p>
+                <h1>Welcome Back</h1>
+                <p>Login to continue earning commissions</p>
             </div>
             
             <form id="loginForm" class="auth-form">
                 <div class="form-group">
                     <label for="login">
                         <i class="fas fa-envelope"></i>
-                        Email or Phone Number
+                        Email or Phone
                     </label>
                     <div class="input-wrapper">
                         <input type="text" id="login" name="login" 
-                               placeholder="Enter your email or phone number" 
+                               placeholder="Enter your email or phone" 
                                required autocomplete="username">
                     </div>
                 </div>
@@ -942,7 +496,7 @@
                         <input type="checkbox" name="remember"> 
                         <span>Remember me</span>
                     </label>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <a href="#" class="forgot-password" onclick="forgotPassword(event)">Forgot Password?</a>
                 </div>
                 
                 <div id="errorMessages" class="error-messages"></div>
@@ -954,7 +508,7 @@
             </form>
             
             <div class="auth-footer">
-                <p>Don't have an account? <a href="register.html">Join AffiliatePro Now →</a></p>
+                <p>Don't have an account? <a href="register.html">Join AffiliatePro</a></p>
             </div>
             
             <div class="auth-divider">
@@ -973,11 +527,7 @@
     </div>
 
     <script>
-        // API Base URL - Update this with your Render backend URL
-        const API_BASE_URL = 'http://localhost/affiliate-pro/backend/api';
-        // For production, use: 'https://your-backend.onrender.com/api'
-
-        // Toggle password visibility with animation
+        // Toggle password visibility
         function togglePassword(fieldId) {
             const field = document.getElementById(fieldId);
             const icon = field.nextElementSibling;
@@ -986,108 +536,72 @@
                 field.type = 'text';
                 icon.classList.remove('fa-eye');
                 icon.classList.add('fa-eye-slash');
-                icon.style.color = 'var(--primary)';
             } else {
                 field.type = 'password';
                 icon.classList.remove('fa-eye-slash');
                 icon.classList.add('fa-eye');
-                icon.style.color = 'var(--gray)';
             }
-            
-            // Add a little shake animation
-            icon.style.animation = 'shake 0.3s ease-in-out';
-            setTimeout(() => {
-                icon.style.animation = '';
-            }, 300);
         }
 
-        // Show notification with animation
+        // Show notification
         function showNotification(message, type = 'info') {
-            // Remove any existing notifications
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-            
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
-            
-            // Choose icon based on type
-            let icon = 'info-circle';
-            if (type === 'success') icon = 'check-circle';
-            if (type === 'error') icon = 'exclamation-circle';
-            
             notification.innerHTML = `
-                <i class="fas fa-${icon}"></i>
-                <span>${message}</span>
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                ${message}
             `;
             
             document.body.appendChild(notification);
             
-            // Trigger animation
             setTimeout(() => {
                 notification.classList.add('show');
             }, 100);
             
-            // Auto hide after 3 seconds
             setTimeout(() => {
                 notification.classList.remove('show');
                 setTimeout(() => {
                     notification.remove();
-                }, 400);
+                }, 300);
             }, 3000);
         }
 
-        // Add input focus effects
-        document.querySelectorAll('.form-group input').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.parentElement.classList.add('focused');
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.parentElement.classList.remove('focused');
-            });
-        });
+        // Forgot password
+        function forgotPassword(e) {
+            e.preventDefault();
+            showNotification('Password reset link will be sent to your email', 'info');
+        }
 
-        // Handle Login Form Submission
+        // Social login
+        function socialLogin(provider) {
+            showNotification(`${provider} login coming soon!`, 'info');
+        }
+
+        // Handle Login
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('loginBtn');
             const errorDiv = document.getElementById('errorMessages');
             
-            // Clear previous errors with fade out
-            if (errorDiv.style.display === 'block') {
-                errorDiv.style.opacity = '0';
-                setTimeout(() => {
-                    errorDiv.innerHTML = '';
-                    errorDiv.style.display = 'none';
-                    errorDiv.style.opacity = '1';
-                }, 300);
-            } else {
-                errorDiv.innerHTML = '';
-                errorDiv.style.display = 'none';
-            }
+            errorDiv.style.display = 'none';
             
-            // Disable button and show loading with animation
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
             
-            // Get form data
             const formData = {
                 login: document.getElementById('login').value.trim(),
                 password: document.getElementById('password').value
             };
             
-            // Simulate API call for demo (remove this when backend is ready)
+            // Demo mode - remove when backend is ready
             setTimeout(() => {
-                // Demo mode - simulate successful login
                 if (formData.login && formData.password) {
                     const demoUser = {
                         id: 1,
                         username: 'demo_user',
                         email: formData.login.includes('@') ? formData.login : 'demo@example.com',
-                        phone: formData.login.includes('@') ? '0712345678' : formData.login,
+                        phone: formData.login,
                         referral_code: 'DEMO123',
                         balance: 1500,
                         total_earned: 3500
@@ -1096,148 +610,25 @@
                     localStorage.setItem('auth_token', 'demo_token_123456');
                     localStorage.setItem('user', JSON.stringify(demoUser));
                     
-                    showNotification('Login successful! Redirecting to dashboard...', 'success');
+                    showNotification('Login successful! Redirecting...', 'success');
                     
                     setTimeout(() => {
                         window.location.href = 'dashboard.html';
                     }, 1500);
                 } else {
-                    errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter your login credentials';
+                    errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter your credentials';
                     errorDiv.style.display = 'block';
                     
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<span>Login</span><i class="fas fa-arrow-right"></i>';
                 }
-            }, 1500);
-            
-            // Uncomment this when backend is ready
-            /*
-            try {
-                const response = await fetch(`${API_BASE_URL}/login.php`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    // Store token and user data
-                    localStorage.setItem('auth_token', data.token);
-                    localStorage.setItem('user', JSON.stringify(data.user));
-                    
-                    showNotification('Login successful! Redirecting to dashboard...', 'success');
-                    
-                    // Redirect to dashboard
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 1500);
-                } else {
-                    // Show errors with animation
-                    let errorHtml = '<ul>';
-                    for (let key in data.errors) {
-                        errorHtml += `<li><i class="fas fa-exclamation-circle"></i> ${data.errors[key]}</li>`;
-                    }
-                    errorHtml += '</ul>';
-                    
-                    errorDiv.innerHTML = errorHtml;
-                    errorDiv.style.display = 'block';
-                    
-                    // Shake the form
-                    document.querySelector('.auth-card').style.animation = 'shake 0.5s ease-in-out';
-                    setTimeout(() => {
-                        document.querySelector('.auth-card').style.animation = '';
-                    }, 500);
-                    
-                    // Re-enable button
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Login</span><i class="fas fa-arrow-right"></i>';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Network error. Please check your connection and try again.';
-                errorDiv.style.display = 'block';
-                
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<span>Login</span><i class="fas fa-arrow-right"></i>';
-            }
-            */
+            }, 1000);
         });
-
-        // Social login (placeholder)
-        function socialLogin(provider) {
-            showNotification(`🚀 ${provider} login coming soon! Stay tuned.`, 'info');
-            
-            // Add button animation
-            const btn = event.currentTarget;
-            btn.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                btn.style.transform = '';
-            }, 200);
-        }
 
         // Check if already logged in
-        const token = localStorage.getItem('auth_token');
-        if (token) {
-            showNotification('You are already logged in! Redirecting...', 'info');
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1500);
+        if (localStorage.getItem('auth_token')) {
+            window.location.href = 'dashboard.html';
         }
-
-        // Add parallax effect on mouse move (desktop only)
-        if (window.innerWidth > 768) {
-            document.addEventListener('mousemove', function(e) {
-                const particles = document.querySelectorAll('.particle');
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
-                
-                particles.forEach((particle, index) => {
-                    const speed = 20 + (index * 5);
-                    const x = (mouseX * speed);
-                    const y = (mouseY * speed);
-                    particle.style.transform = `translate(${x}px, ${y}px)`;
-                });
-            });
-        }
-
-        // Add smooth scroll behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Handle forgot password click
-        document.querySelector('.forgot-password').addEventListener('click', function(e) {
-            e.preventDefault();
-            showNotification('📧 Password reset link will be sent to your email!', 'info');
-        });
-
-        // Add input validation on the fly
-        document.getElementById('login').addEventListener('input', function() {
-            const errorDiv = document.getElementById('errorMessages');
-            if (errorDiv.style.display === 'block' && errorDiv.innerHTML.includes('login')) {
-                errorDiv.style.display = 'none';
-            }
-        });
-
-        document.getElementById('password').addEventListener('input', function() {
-            const errorDiv = document.getElementById('errorMessages');
-            if (errorDiv.style.display === 'block' && errorDiv.innerHTML.includes('password')) {
-                errorDiv.style.display = 'none';
-            }
-        });
     </script>
 </body>
 </html>
