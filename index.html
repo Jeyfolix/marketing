@@ -105,6 +105,8 @@
             color: var(--primary);
             font-weight: 600;
             transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-outline:hover {
@@ -120,6 +122,8 @@
             font-weight: 600;
             box-shadow: 0 4px 15px rgba(37,99,235,0.4);
             transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary:hover {
@@ -636,6 +640,8 @@
             align-items: center;
             justify-content: center;
             transition: 0.3s;
+            color: white;
+            text-decoration: none;
         }
 
         .social-links a:hover {
@@ -703,8 +709,8 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="nav-buttons">
-                    <a href="#" class="btn-outline">Login</a>
-                    <a href="#" class="btn-primary">Join Now</a>
+                    <a href="login.html" class="btn-outline">Login</a>
+                    <a href="register.html" class="btn-primary">Join Now</a>
                 </li>
             </ul>
         </div>
@@ -728,7 +734,7 @@
                 <div class="stat-item"><span class="stat-number">4.8★</span><span class="stat-label">User Rating</span></div>
             </div>
             <div class="hero-cta">
-                <a href="#" class="btn-primary btn-large"><i class="fas fa-rocket"></i> Start Earning Now - KES 300 Only</a>
+                <a href="register.html" class="btn-primary btn-large"><i class="fas fa-rocket"></i> Start Earning Now - KES 300 Only</a>
                 <a href="#how-it-works" class="btn-outline btn-large"><i class="fas fa-play"></i> Watch Demo</a>
             </div>
             <div class="trust-badges">
@@ -840,7 +846,7 @@
                         <div class="result-item highlight"><span>Potential Bonus:</span> <strong id="bonusEarnings">KES 500</strong></div>
                     </div>
                 </div>
-                <a href="#" class="btn-primary btn-large">Start Earning This Amount</a>
+                <a href="register.html" class="btn-primary btn-large">Start Earning This Amount</a>
             </div>
         </div>
     </section>
@@ -899,7 +905,7 @@
                 <h2>Ready to Start Earning?</h2>
                 <p>Join thousands of Kenyans already earning with AffiliatePro</p>
                 <div class="cta-features"><span><i class="fas fa-check-circle"></i> KES 300 Only</span><span><i class="fas fa-check-circle"></i> Instant Access</span><span><i class="fas fa-check-circle"></i> Start Earning Today</span></div>
-                <a href="#" class="btn-primary btn-large"><i class="fas fa-rocket"></i> Join AffiliatePro Now</a>
+                <a href="register.html" class="btn-primary btn-large"><i class="fas fa-rocket"></i> Join AffiliatePro Now</a>
                 <p class="small-text">30-Day Money-Back Guarantee</p>
             </div>
         </div>
@@ -948,6 +954,21 @@
         }
         range.addEventListener('input', (e) => updateCalc(e.target.value));
         updateCalc(10);
+
+        // Check if user is logged in
+        function checkLoginStatus() {
+            const token = localStorage.getItem('auth_token');
+            const navButtons = document.querySelector('.nav-buttons');
+            
+            if (token) {
+                // User is logged in - show dashboard link
+                navButtons.innerHTML = `
+                    <a href="dashboard.html" class="btn-primary"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                `;
+            }
+        }
+        
+        checkLoginStatus();
     </script>
 </body>
 </html>
